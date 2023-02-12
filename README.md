@@ -10,7 +10,19 @@ pip install -r requirements.txt
 3. Change the rootfolders to match your setup
 4. Only uncomment the `request.post` block if you use ntfy
 5. Run with `python main.py` or `python main.py &`(detached)
-
+6. In Seerr, turn on `webhook notification agent` and enable `request pending approval` notification type
+7. Add the url for the webhook, for example, `192.168.1.5:5001/webhook`
+8. Add the following template and save
+```
+{
+  "requestID": "{{request_id}}",
+  "mediaId": "{{media_tmdbid}}",
+  "mediaType": "{{media_type}}",
+  "{{extra}}": [],
+  "image": "{{image}}",
+  "message": "{{message}}"
+}
+```
 
 #### TODO:
 - Make url, rootfolders, port passable as args or through env
