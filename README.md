@@ -7,6 +7,7 @@ Automatically change the rootFolder of a requested item depending on whether it 
 pip install -r requirements.txt
 ```
 2. Change the `get_url` and `put_url` to your seerr url
+3. Also add in your api-keys into the headers of both under `'X-Api-Key':`
 3. Change the rootfolders to match your setup
 4. Only uncomment the `request.post` block if you use ntfy
 5. Run with `python main.py` or `python main.py &`(detached)
