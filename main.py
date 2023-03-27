@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-Jellyseer-Api-Key = os.getenv("Jellyseer-Api-Key", None)
+Jellyseer_Api_Key = os.getenv("Jellyseer-Api-Key", None)
 movieFolder_Animemovies = os.getenv("rootFolder_Animemovies", None)
 movieFolder_Cartoon = os.getenv("rootFolder_Cartoon", None)
 tvFolder_documentary = os.getenv("rootFolder_documentary", None)
