@@ -4,9 +4,12 @@ from flask import Flask, request
 from waitress import serve
 from dotenv import load_dotenv
 
+#load the .env file to find any environment variables.
 load_dotenv()
 
-Jellyseer_Api_Key = os.getenv("Jellyseer-Api-Key", None)
+#Set variables
+seerr_baseurl = os.getenv("seerr_baseurl", None)
+seerr_api_key = os.getenv("seerr_api_key", None)
 movieFolder_Animemovies = os.getenv("rootFolder_Animemovies", None)
 movieFolder_Cartoon = os.getenv("rootFolder_Cartoon", None)
 tvFolder_documentary = os.getenv("rootFolder_documentary", None)
@@ -37,10 +40,10 @@ def process_request(request_data):
                 seasons = item['value']
                 break
     print(seasons)
-    get_url = f'http://localhost:5055/api/v1/{media_type}/{media_tmdbid}?language=en'
+    get_url = seerr_baseurl + f'/api/v1/{media_type}/{media_tmdbid}?language=en'
     headers = {
         'accept': 'application/json',
-        'X-Api-Key': Jellyseer-Api-Key
+        'X-Api-Key': seerr_api_key
     }
 
     response = requests.get(get_url, headers=headers)
@@ -86,10 +89,10 @@ def process_request(request_data):
                 "rootFolder": tvFolder_reality
             }
 
-    put_url = f'http://localhost:5055/api/v1/request/{request_id}'
+    put_url = seerr_baseurl + f'/api/v1/request/{request_id}'
     headers = {
         'accept': 'application/json',
-        'X-Api-Key': Jellyseer-Api-Key,
+        'X-Api-Key': seerr_api_key,
         'Content-Type': 'application/json'
         }
     if put_data:
@@ -110,9 +113,9 @@ def process_request(request_data):
         #}
     )
     if response.status_code != 200:
-        raise Exception(f'Error sending message to ntfy: {response.content}')
+        raise Exception(f'Error updating request status: {response.content}')
     else:
-        print("Success, 200")
+        print("Automatically approve tv show request on Seerr instance, 200")
 
 def handle_request(request):
     request_data = request.get_json()
