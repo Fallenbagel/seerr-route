@@ -115,7 +115,7 @@ def process_request(request_data):
     if response.status_code != 200:
         raise Exception(f'Error updating request status: {response.content}')
     else:
-        print("Automatically approve tv show request on Seerr instance, 200")
+        print("Success for request on Seerr instance, 200")
 
 def handle_request(request):
     request_data = request.get_json()
