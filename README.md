@@ -38,7 +38,7 @@ docker run --env-file ./.env seerr-route
 ```
 
 #### TODO:
-~~- Make url, rootfolders, port passable as args or through env~~
+- ~~Make url, rootfolders, port passable as args or through env~~
 - Add more notification agents (discord, telegram)
 - Make notifications selectable especially for docker
 - Push image to dockerhub/ghcr.io
