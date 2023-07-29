@@ -102,16 +102,6 @@ def process_request(request_data):
         #title = response_data['title']
         title = response_data.get('title', response_data.get('name', ''))
         print(f"{title}\n{overview}\nRoot Folder: {rootFolder}")
-        #requests.post("https://ntfy.sh/requests",
-        #data=f"{title}\n{overview}\n\nRoot Folder: {rootFolder}".encode('utf-8'),
-        #headers={
-        #    "Title": f"Root folder has been changed for the {media_type}",
-        #    #"Authorization": "",
-        #    "priority": "urgent",
-        #    "Attach": image,
-        #    "tags": "warning"
-        #}
-    )
     if response.status_code != 200:
         raise Exception(f'Error updating request status: {response.content}')
     else:
